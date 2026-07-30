@@ -27,6 +27,7 @@ public class TemperatureConverterGUI {
 
     JTextArea historyArea;
     TemperatureConverter converter;
+    HistoryManager historyManager;
 
     public TemperatureConverterGUI(){
         frame = new JFrame("Temperature Converter");
@@ -36,20 +37,19 @@ public class TemperatureConverterGUI {
         frame.setLocationRelativeTo(null);
       
         converter = new TemperatureConverter();
+        historyManager = new HistoryManager();
 
         temperatureLabel = new JLabel("Temperature:");
         temperatureField = new JTextField(15);
 
         fromLabel = new JLabel("Convert From:");
         fromComboBox =new JComboBox<>();
-
         fromComboBox.addItem("Celsius");
         fromComboBox.addItem("Fahrenheit");
         fromComboBox.addItem("Kelvin");
 
         toJLabel = new JLabel("Convert to:");
         toComboBox = new JComboBox<>();
-
         toComboBox.addItem("Celsius");
         toComboBox.addItem("Fahrenheit");
         toComboBox.addItem("Kelvin");
@@ -65,7 +65,6 @@ public class TemperatureConverterGUI {
         brownButton = new JButton("Brown");
 
         historyArea = new JTextArea(10,30);
-        
         historyArea.setEditable(false);
 
         frame.add(temperatureLabel);
@@ -137,6 +136,9 @@ public class TemperatureConverterGUI {
 
                result = Utils.round(result, 2);
                resultJLabel.setText("Result : " + String.format("%.2f", result));
+
+            historyManager.addEntry(from, to, temperature, result);
+            historyArea.setText(historyManager.getHistoryAsText());
             }
 
             catch (NumberFormatException ex){
