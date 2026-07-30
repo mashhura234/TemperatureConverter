@@ -92,6 +92,13 @@ public class TemperatureConverterGUI {
 //Implementation of Convert Button
 //-----------------------------------
         convertButton.addActionListener(e -> {
+
+            String inputText = temperatureField.getText();
+
+            if(!Utils.isValidNumber(inputText)){
+                JOptionPane.showMessageDialog(frame, "Please enter a valid number!");
+            }
+
             try{
                double temperature = Double.parseDouble(temperatureField.getText());
 
@@ -128,6 +135,7 @@ public class TemperatureConverterGUI {
                 result = temperature;
                }
 
+               result = Utils.round(result, 2);
                resultJLabel.setText("Result : " + String.format("%.2f", result));
             }
 
@@ -137,7 +145,7 @@ public class TemperatureConverterGUI {
         });
 
 
-//Implementation of Convert Button
+//Implementation of Swap Button
 //-----------------------------------
         swapButton.addActionListener(e -> {
             int fromIndex = fromComboBox.getSelectedIndex();
@@ -147,6 +155,28 @@ public class TemperatureConverterGUI {
             toComboBox.setSelectedIndex(fromIndex);
         });
 
+
+//Implementation of Clear Button
+//-----------------------------------
+        clearButton.addActionListener(e -> {
+            temperatureField.setText(" ");
+            resultJLabel.setText("Result: ");
+        });
+
+
+//Implementation of Theme Button
+//-----------------------------------
+        whiteButton.addActionListener(e ->{
+            frame.getContentPane().setBackground(Color.WHITE);
+        });
+
+        darkButton.addActionListener(e ->{
+            frame.getContentPane().setBackground(Color.DARK_GRAY);
+        });
+
+        brownButton.addActionListener(e ->{
+            frame.getContentPane().setBackground(new Color(150,111,51));
+        });
 
 
         frame.setVisible(true);
