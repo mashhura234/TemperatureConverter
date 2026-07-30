@@ -26,14 +26,16 @@ public class TemperatureConverterGUI {
     JButton brownButton;
 
     JTextArea historyArea;
+    TemperatureConverter converter;
 
     public TemperatureConverterGUI(){
         frame = new JFrame("Temperature Converter");
-        frame.setSize(500, 600);
+        frame.setSize(500, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
         frame.setLocationRelativeTo(null);
-       
+      
+        converter = new TemperatureConverter();
 
         temperatureLabel = new JLabel("Temperature:");
         temperatureField = new JTextField(15);
@@ -63,6 +65,7 @@ public class TemperatureConverterGUI {
         brownButton = new JButton("Brown");
 
         historyArea = new JTextArea(10,30);
+        
         historyArea.setEditable(false);
 
         frame.add(temperatureLabel);
@@ -86,7 +89,67 @@ public class TemperatureConverterGUI {
 
         frame.add(new JScrollPane(historyArea));
 
-         frame.setVisible(true);
+//Implementation of Convert Button
+//-----------------------------------
+        convertButton.addActionListener(e -> {
+            try{
+               double temperature = Double.parseDouble(temperatureField.getText());
+
+               String from = (String) fromComboBox.getSelectedItem();
+               String to = (String) toComboBox.getSelectedItem();
+
+               double result = 0;
+
+               if(from.equals("Celsius") && to.equals("Fahrenheit")){
+                result = converter.celsiusToFahrenheit(temperature);
+               }
+
+               else if(from.equals("Celsius") && to.equals("Kelvin")){
+                result = converter.celsiusToKelvin(temperature);
+               }
+
+               else if(from.equals("Fahrenheit") && to.equals("Celsius")){
+                result = converter.fahrenheitToCelsius(temperature);
+               }
+
+               else if(from.equals("Fahrenheit") && to.equals("Kelvin")){
+                result = converter.fahrenheitToKelvin(temperature);
+               }
+
+               else if(from.equals("Kelvin") && to.equals("Celsius")){
+                result = converter.kelvinToCelsius(temperature);
+               }
+
+               else if(from.equals("Kelvin") && to.equals("Fahrenheit")){
+                result = converter.kelvinToFahrenheit(temperature);
+               }
+               
+               else{
+                result = temperature;
+               }
+
+               resultJLabel.setText("Result : " + String.format("%.2f", result));
+            }
+
+            catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(frame, "Please enter a valid number!");
+            }
+        });
+
+
+//Implementation of Convert Button
+//-----------------------------------
+        swapButton.addActionListener(e -> {
+            int fromIndex = fromComboBox.getSelectedIndex();
+            int toIndex = toComboBox.getSelectedIndex();
+
+            fromComboBox.setSelectedIndex(toIndex);
+            toComboBox.setSelectedIndex(fromIndex);
+        });
+
+
+
+        frame.setVisible(true);
     }
     
 }
