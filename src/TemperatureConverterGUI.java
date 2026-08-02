@@ -23,7 +23,7 @@ public class TemperatureConverterGUI {
 
     JButton whiteButton;
     JButton darkButton;
-    JButton brownButton;
+    JButton darkseagreenButton;
 
     JTextArea historyArea;
     TemperatureConverter converter;
@@ -62,7 +62,7 @@ public class TemperatureConverterGUI {
 
         whiteButton = new JButton("White");
         darkButton = new JButton("Dark");
-        brownButton = new JButton("Brown");
+        darkseagreenButton = new JButton("Brown");
 
         historyArea = new JTextArea(10,30);
         historyArea.setEditable(false);
@@ -84,7 +84,7 @@ public class TemperatureConverterGUI {
 
         frame.add(whiteButton);
         frame.add(darkButton);
-        frame.add(brownButton);
+        frame.add(darkseagreenButton);
 
         frame.add(new JScrollPane(historyArea));
 
@@ -173,11 +173,12 @@ public class TemperatureConverterGUI {
         });
 
         darkButton.addActionListener(e ->{
-            frame.getContentPane().setBackground(Color.DARK_GRAY);
+           frame.getContentPane().setBackground(new Color(105,105,105));
+           //frame.getContentPane().setBackground(Color.BLACK);
         });
 
-        brownButton.addActionListener(e ->{
-            frame.getContentPane().setBackground(new Color(150,111,51));
+        darkseagreenButton.addActionListener(e ->{
+            frame.getContentPane().setBackground(new Color(143,188,143));
         });
 
 
