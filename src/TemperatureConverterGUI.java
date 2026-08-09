@@ -20,6 +20,7 @@ public class TemperatureConverterGUI {
     JButton clearButton;
 
     JLabel resultJLabel;
+    JLabel categoryLabel;
 
     JButton whiteButton;
     JButton darkButton;
@@ -59,6 +60,7 @@ public class TemperatureConverterGUI {
         clearButton = new JButton("Clear");
 
         resultJLabel = new JLabel("Result: ");
+        categoryLabel = new JLabel("Category: ");
 
         whiteButton = new JButton("White");
         darkButton = new JButton("Dark");
@@ -82,6 +84,7 @@ public class TemperatureConverterGUI {
         frame.add(clearButton);
         
         frame.add(resultJLabel);
+        frame.add(categoryLabel);
 
         frame.add(whiteButton);
         frame.add(darkButton);
@@ -138,6 +141,21 @@ public class TemperatureConverterGUI {
                result = Utils.round(result, 2);
                resultJLabel.setText("Result : " + String.format("%.2f", result));
 
+               double celsiusTemperature;
+
+               if(from.equals("Celsius")){
+                celsiusTemperature = temperature;
+               }
+               else if(from.equals("Fahrenheit")){
+                celsiusTemperature = converter.fahrenheitToCelsius(temperature);
+               }
+               else{
+                celsiusTemperature = converter.kelvinToCelsius(temperature);
+               }
+
+               String category = Utils.getTemperatureCategory(celsiusTemperature);
+               categoryLabel.setText("Category: " + category);
+
             historyManager.addEntry(from, to, temperature, result);
             historyArea.setText(historyManager.getHistoryAsText());
             }
@@ -162,8 +180,9 @@ public class TemperatureConverterGUI {
 //Implementation of Clear Button
 //-----------------------------------
         clearButton.addActionListener(e -> {
-            temperatureField.setText(" ");
+            temperatureField.setText("");
             resultJLabel.setText("Result: ");
+            categoryLabel.setText("Category: ");
         });
 
 

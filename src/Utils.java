@@ -23,4 +23,25 @@ public class Utils {
             return false;
         }
     }
+
+    public static String getTemperatureCategory(double celsius){
+        if(celsius < 0){
+            return "Freezing";
+        }
+        else if(celsius < 15){
+            return "Cold";
+        }
+
+        else if(celsius < 25){
+            return "Cool";
+        }
+
+        else if(celsius < 35){
+            return "Warm";
+        }
+
+        else{
+            return "Hot";
+        }
+    }
 }
