@@ -62,10 +62,11 @@ public class TemperatureConverterGUI {
 
         whiteButton = new JButton("White");
         darkButton = new JButton("Dark");
-        darkseagreenButton = new JButton("Brown");
+        darkseagreenButton = new JButton("Green");
 
         historyArea = new JTextArea(10,30);
         historyArea.setEditable(false);
+        historyArea.setText(historyManager.getHistoryAsText());
 
         frame.add(temperatureLabel);
         frame.add(temperatureField);
@@ -181,6 +182,7 @@ public class TemperatureConverterGUI {
             frame.getContentPane().setBackground(new Color(143,188,143));
         });
 
+      
 
         frame.setVisible(true);
     }

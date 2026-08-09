@@ -1,0 +1,6 @@
+10-08-2026 02:16 AM | 20.00 Celsius -> 293.15 Kelvin
+10-08-2026 02:16 AM | 20.00 Kelvin -> -253.15 Celsius
+10-08-2026 02:17 AM | 52.00 Kelvin -> -366.07 Fahrenheit
+10-08-2026 02:17 AM | 52.00 Fahrenheit -> 284.26 Kelvin
+10-08-2026 02:17 AM | 10.00 Celsius -> 283.15 Kelvin
+10-08-2026 02:17 AM | 10.00 Kelvin -> -263.15 Celsius
