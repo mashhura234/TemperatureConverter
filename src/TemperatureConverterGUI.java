@@ -31,7 +31,7 @@ public class TemperatureConverterGUI {
     HistoryManager historyManager;
 
     public TemperatureConverterGUI(){
-        frame = new JFrame("Temperature Converter");
+        frame = new JFrame("🌡Temperature Converter");
         frame.setSize(500, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
