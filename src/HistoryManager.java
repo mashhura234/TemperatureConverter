@@ -72,6 +72,7 @@ public class HistoryManager {
 
     public void clearHistory(){
         history.clear();
+        saveHistory();
     }
     
 }
