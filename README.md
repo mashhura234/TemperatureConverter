@@ -106,7 +106,8 @@ java src.Main
 
 ## 👤 Author
 
-Mst. Mashhura Nasrin Monika
+**Mst. Mashhura Nasrin Monika**
+
 B.Sc. in Computer Science and Engineering, Metropolitan University, Sylhet
 
 ---
